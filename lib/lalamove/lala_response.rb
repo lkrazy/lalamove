@@ -3,7 +3,7 @@ module Lalamove
     attr_reader :body, :code, :headers
 
     def initialize(http_response)
-      @body = JSON.parse(http_response, symbolize_names: true)
+      @body = JSON.parse(http_response.body, symbolize_names: true)
       @code = http_response.response.code
       @headers = http_response.headers
     end
