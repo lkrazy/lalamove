@@ -15,11 +15,11 @@ module Lalamove
       headers = get_header(token, timestamp.to_s)
       url = request_url(path)
       if method === 'POST'
-        HTTParty.post(url, :headers => headers, :body => opts)
+        LalaResponse.new HTTParty.post(url, :headers => headers, :body => opts)
       elsif method === 'GET'
-        HTTParty.get(url, :headers => headers)
+        LalaResponse.new HTTParty.get(url, :headers => headers)
       elsif method === 'PUT'
-        HTTParty.put(url, :headers => headers)
+        LalaResponse.new HTTParty.put(url, :headers => headers)
       end
     end
 
