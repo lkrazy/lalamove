@@ -13,7 +13,7 @@ module Lalamove
   # Config Module
   module Config
     def self.base_url
-      return @base_url unless @base_url.nil?
+      return Lalamove::Config.base_url unless Lalamove::Config.base_url.nil?
 
       return SANDBOX_BASE_URL if Lalamove::Config.mode == :sandbox
 

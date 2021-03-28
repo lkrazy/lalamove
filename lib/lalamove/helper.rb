@@ -16,9 +16,9 @@ module Lalamove
       url = request_url(path)
       if method === 'POST'
         HTTParty.post(url, :headers => headers, :body => opts)
-      elseif === 'GET'
+      elsif method === 'GET'
         HTTParty.get(url, :headers => headers)
-      else
+      elsif method === 'PUT'
         HTTParty.put(url, :headers => headers)
       end
     end
