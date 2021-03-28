@@ -13,9 +13,9 @@ module Lalamove
   # Config Module
   module Config
     def self.base_url
-      return Lalamove::Config.base_url unless Lalamove::Config.base_url.nil?
+      return Lalamove.config.base_url unless Lalamove.config.base_url.nil?
 
-      return SANDBOX_BASE_URL if Lalamove::Config.mode == :sandbox
+      return SANDBOX_BASE_URL if Lalamove.config.mode == :sandbox
 
       PROD_BASE_URL
     end
