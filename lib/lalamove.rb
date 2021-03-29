@@ -4,6 +4,7 @@ require 'lalamove/version'
 require 'lalamove/configuration'
 require 'lalamove/lala_response'
 require 'lalamove/service'
+require 'lalamove/order'
 require 'lalamove/helper'
 
 # Lalamove
