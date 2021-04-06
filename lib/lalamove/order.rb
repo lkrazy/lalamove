@@ -7,7 +7,17 @@ module Lalamove
     # Order 
     class Order
       def self.order(payload)
-        Helper.request('/v2/orders', payload, 'POST')
+        res = Helper.request('/v2/orders', payload, 'POST')
+        if res.code == 402
+          res.body = { message: 'You have insufficient credit. Please top up your wallet' }
+        elsif res.code == 403
+          res.body = { message: 'The currency you provided in quotedTotalFee.currency is not a valid currency' }
+        elsif res.code == 409
+          res.body = { message: 'The amount or currency you provided in quotedTotalFee doesn\'t match quotation' }
+        elsif res.code == 429
+          res.body = { message: 'Too Many Request' }
+        end
+        res
       end
 
       def self.order_detail(id)

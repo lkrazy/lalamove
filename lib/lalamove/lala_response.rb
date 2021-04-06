@@ -1,10 +1,16 @@
 module Lalamove
   class LalaResponse
+
     attr_reader :body, :code, :headers
 
     def initialize(http_response)
-      @body = JSON.parse(http_response.body, symbolize_names: true)
-      @code = http_response.response.code
+      @code = http_response.response.code.to_i
+      begin
+        @body = JSON.parse(http_response.body, symbolize_names: true)
+      rescue
+        @body = nil
+      end
+
       @headers = http_response.headers
     end
 
