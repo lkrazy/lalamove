@@ -1,7 +1,7 @@
 module Lalamove
   class LalaResponse
 
-    attr_reader :body, :code, :headers
+    attr_accessor :body, :code, :headers
 
     def initialize(http_response)
       @code = http_response.response.code.to_i
